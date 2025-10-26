@@ -1,17 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { FaHeartbeat, FaMedal, FaUsers, FaRocket } from "react-icons/fa";
 
 export default function AboutPage() {
-  const fadeUp = {
+  // ✅ Type-safe Framer Motion variant (no function form)
+  const fadeUp: Variants = {
     hidden: { opacity: 0, y: 80 },
-    show: (delay = 0) => ({
+    show: {
       opacity: 1,
       y: 0,
-      transition: { delay, duration: 0.8, ease: "easeOut" },
-    }),
+      transition: {
+        delay: 0.3,
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    },
   };
 
   const sectionHeader = (title: string, subtitle?: string) => (
@@ -92,11 +97,11 @@ export default function AboutPage() {
           ].map((item, i) => (
             <motion.div
               key={item.title}
-              custom={i * 0.2}
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
+              transition={{ delay: i * 0.2 }}
               className="group bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all border border-gray-200"
             >
               <div className="flex justify-center mb-4">{item.icon}</div>
@@ -165,11 +170,11 @@ export default function AboutPage() {
           ].map((leader, i) => (
             <motion.div
               key={leader.name}
-              custom={i * 0.3}
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
+              transition={{ delay: i * 0.3 }}
               whileHover={{ scale: 1.05, rotateY: 3 }}
               className="relative group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
             >
