@@ -30,7 +30,7 @@ export default function ConsultingPage() {
       img: "https://images.unsplash.com/photo-1628595351029-57baf2b8e8a8?auto=format&fit=crop&w=2000&q=80",
     },
   ];
-
+    
   return (
     <main className="bg-gray-50 text-gray-800">
       {/* Hero Section */}
